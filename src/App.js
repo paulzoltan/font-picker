@@ -1,18 +1,15 @@
-import React from 'react';
+import FontPicker from './FontPicker/FontPicker'
+import './index.css'
 
 function App() {
+  const config = {
+    //sort: 'date',
+    //sort: 'style',
+    sort: 'trending',
+    fontNumber: 100
+  }
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <FontPicker {...config}>Task Tracker4</FontPicker>
+  )
 }
-
 export default App;
