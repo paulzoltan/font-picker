@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=My+Soul&display=swap');
+
+.tool-selector {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  pointer-events: none;
+  gap: 1em;
+  padding: 1em;
+  align-items: space-between;
+}
+.tool-selector__item {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  background-color: #555;
+  font-size: 1.3em;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.tool-selector__item.family {
+  font-family: 'My Soul', cursive;;
+}
+
+.tool-selector__item.color{
+  color: #FAFF00;
+  background-color: #555;
+}
+
+.popup:has(.color-picker) {
+  top: 0;
+  left: 0;
+  translate: calc(100vw - 40em) calc(100vh - 17em);
+}
+
+.draghandle {
+  height: 1em;
+}
+
+.popup .react-colorful__saturation {
+  border-radius: 0;
+}
+
+.popup .react-colorful__last-control {
+  border-radius: 0;
+}
+
+.color-text-display {
+  padding: 0.5em 1em;
+  font: inherit;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.react-colorful__last-control .react-colorful__pointer {
+  /* border: 2px solid red; */
+  box-shadow: 0 0 0 1px #000f, inset 0 0 0 1px #000f;
+}
+
+.popup:has(.font-sizer) {
+  top: 0;
+  left: 0;
+  translate: calc(100vw - 25em) calc(100vh - 5em);
+}
+
+.font-sizer {
+  display: flex;
+  padding: 0.2em 1em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0.2em;
+  grid-row-gap: 0.1em;
+  grid-template-columns: auto auto;
+  color: #fff9;
+}
+
+.font-sizer button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff9;
+  cursor: pointer;
+}
+.font-sizer button:hover {
+  color: #fffd;
+}
+
+.font-sizer__figures { 
+  font-size: 3em;
+  grid-area: 1 / 1 / 3 / 2;
+  align-self: center;
+}
+.font-sizer__arrow-up { 
+  grid-area: 1 / 2 / 2 / 3;
+  align-self: end;
+  display: flex;
+}
+.font-sizer__arrow-down { 
+  grid-area: 2 / 2 / 3 / 3;
+  align-self: start;
+  display: flex;
+  padding: 0.1em;
+}
+
+
+.popup {
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  color: #fffd;
+  width: max-content;
+  border-radius: 0.5em;
+  overflow: hidden;
+  z-index: 10;
+  box-shadow: 0 0 35px 0 #0003, 0 0 7px 0 #000a;
+}
+
+.popup:has(.popup__select){
+   top: 0;
+   left: 0;
+   translate: calc(100vw - 26em) calc(100vh - 37em);
+}
+
+.popup__select{
+  /* padding: 0.5em 1em; */
+  font-size: 25px;
+  height: 20em;
+  overflow: auto;
+  resize: both;
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: max-content;
+  align-self: flex-end;
+  border: none;
+  padding: 0.1em;
+  color: #fffc;
+  background-color: #3330;
+  cursor: pointer;
+  z-index: 10;
+}
+.select__font-name {
+  cursor: pointer;
+  color: #fff6;
+  padding: 0.2em 0.8em;
+  outline: none;
+}
+
+.select__font-name:hover {
+  background-color: #00ffe512;
+  color: #fffa;
+}
+.select__font-name.selected {
+  background-color: #00ffe548;
+  color: #fffd;
+}
+.select__font-name.selected:hover {
+  background-color: #00ffe568;
+  color: #ffff;
+}
+
+/* SCROLL */
+
+/* width / height */
+div.popup__select::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+div.popup__select::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+div.popup__select::-webkit-scrollbar-thumb {
+  background: #444; 
+}
+
+/* Handle on hover */
+div.popup__select::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+div.popup__select::-webkit-scrollbar-corner {
+  background: #f1f1f100; 
+}
