@@ -10,17 +10,25 @@ const SizePicker = ({sizePickerVisibility, setSizePickerVisibility, size, setSiz
     setSize(size => roundTo(size - Math.sign(event.deltaY) * PRECISION, 2)) 
   }
   return (
-    <motion.div className='popup' style={{visibility: sizePickerVisibility}}
+    <motion.div 
+      className='popup widget widget--size-picker' 
+      style={{visibility: sizePickerVisibility}}
+      onWheel={handleWheel}
       drag 
-      // dragControls={dragControlsSize}
       dragMomentum={false}
+      onDragStart={(e) => {e.target.offsetParent.classList.add('popup__dragged')}}
+      onDragEnd={(e) => {e.target.offsetParent.classList.remove('popup__dragged')}}
     >
-      <button className='close' onClick={() => setSizePickerVisibility('hidden')}><FaTimes /></button>
-      <div className='font-sizer' onWheel={handleWheel}>
-        <div className='font-sizer__figures'>{size}em</div>
-        <button className='font-sizer__arrow-up' onClick={() => setSize(s => roundTo(s + 1 * PRECISION, 2))}><FaArrowUp/></button>
-        <button className='font-sizer__arrow-down' onClick={() => setSize(s => roundTo(s - 1 * PRECISION, 2))}><FaArrowDown/></button>
-      </div>
+      <button className='popup__close' onClick={() => setSizePickerVisibility('hidden')}><FaTimes /></button>
+      <div className='widget--size-picker__figures'>{size}em</div>
+      <button className='widget--size-picker__button widget--size-picker__button--arrow-up'
+      onClick={() => setSize(s => roundTo(s + 1 * PRECISION, 2))}>
+        <FaArrowUp/>
+      </button>
+      <button className='widget--size-picker__button widget--size-picker__button--arrow-down'
+      onClick={() => setSize(s => roundTo(s - 1 * PRECISION, 2))}>
+        <FaArrowDown/>
+      </button>
     </motion.div>
 
   )

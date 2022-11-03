@@ -8,21 +8,21 @@ const ColorPicker = ({colorPickerVisibility, setColorPickerVisibility, color, se
   const dragControls = useDragControls()
 
   return (
-    <motion.div className='popup' style={{visibility: colorPickerVisibility}}
+    <motion.div className='popup widget widget--color-picker' style={{visibility: colorPickerVisibility}}
       drag 
       dragControls={dragControls}
       dragListener={false}
       dragMomentum={false}
+      onDragStart={(e) => {e.target.offsetParent.classList.add('popup__dragged')}}
+      onDragEnd={(e) => {e.target.offsetParent.classList.remove('popup__dragged')}}
     >
-      <div className="draghandle"
+      <div className="widget__draghandle"
         onMouseDown={(e) => {
           dragControls.start(e)
         }}
-      ><button className='close' onClick={() => setColorPickerVisibility('hidden')}><FaTimes /></button></div>
-      <div className='color-picker'>
-        <HexAlphaColorPicker color={color} onChange={setColor} />
-        <div className="color-text-display">{color}</div>
-      </div>
+      ><button className='popup__close' onClick={() => setColorPickerVisibility('hidden')}><FaTimes /></button></div>
+      <HexAlphaColorPicker color={color} onChange={setColor} />
+      <div className="widget--color-picker__text-display">{color}</div>
     </motion.div>
   )
 }

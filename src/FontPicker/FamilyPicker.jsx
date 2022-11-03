@@ -36,7 +36,6 @@ const FamilyPicker = ({familyPickerVisibility, setFamilyPickerVisibility, family
       fontFace.load().then(function(loadedFface) {
         document.fonts.add(loadedFface);
         if (index === array.length - 1) {
-          console.log('Font loading sequence executed!')
           setFontsLoaded(true)
         }
       }).catch(function(error) {
@@ -46,12 +45,13 @@ const FamilyPicker = ({familyPickerVisibility, setFamilyPickerVisibility, family
   }, [fonts, data, status, isLoading, isFetching, fontsLoaded, fontNumber])
   
   return (
-    <motion.div className='popup' style={{visibility: familyPickerVisibility}}
+    <motion.div className='popup widget widget--family-picker' style={{visibility: familyPickerVisibility}}
       drag 
       dragControls={dragControls}
       dragListener={false}
       dragMomentum={false}
-
+      onDragStart={(e) => {e.target.offsetParent.classList.add('popup__dragged')}}
+      onDragEnd={(e) => {e.target.offsetParent.classList.remove('popup__dragged')}}
       onMouseDown={(e) => {
         var scrollBarWidth = e.currentTarget.lastChild.offsetWidth - e.currentTarget.lastChild.clientWidth
         const resizerSize = scrollBarWidth === 0 ? defaultScrollSize : scrollBarWidth
@@ -61,8 +61,10 @@ const FamilyPicker = ({familyPickerVisibility, setFamilyPickerVisibility, family
         }
       }}
     >
-      <button className='close' onClick={() => setFamilyPickerVisibility('hidden')}><FaTimes /></button>
-      <div className='popup__select'
+      <div className="widget__draghandle">
+        <button className='popup__close' onClick={() => setFamilyPickerVisibility('hidden')}><FaTimes /></button>
+      </div>
+      <div className='widget--family-picker__content'
         onKeyDown={(e) => {
           if(["w", "W", "ArrowUp"].includes(e.key)) {
             e.target.previousElementSibling?.focus()
@@ -78,7 +80,7 @@ const FamilyPicker = ({familyPickerVisibility, setFamilyPickerVisibility, family
               <div 
                 key={font.family} 
                 tabIndex={i}
-                className={`select__font-name ${family !== font.family || 'selected'}`}
+                className={`widget--family-picker__font-name${family !== font.family ? '' : ' widget--family-picker__font-name--selected'}`}
                 style={{fontFamily: font.family}} 
                 onFocus={() =>{setFamily(font.family)}}>
                   {font.family}
