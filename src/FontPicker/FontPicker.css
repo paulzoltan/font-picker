@@ -9,6 +9,7 @@
   gap: 1em;
   padding: 1em;
   align-items: space-between;
+  font-size: 16px;
 }
 .tool-picker__button {
   width: 2em;
@@ -26,10 +27,10 @@
   padding: 0;
 }
 .tool-picker__button--family {
-  font-family: 'My Soul', cursive;;
+  font-family: 'My Soul', cursive;
 }
-.tool-picker__button--color{
-  color: #FAFF00;
+.tool-picker__button--color {
+  color: #faff00;
   background-color: #555;
 }
 
@@ -45,7 +46,7 @@
 .popup__dragged {
   z-index: 11;
 }
-body:has( .popup__dragged) {
+body:has(.popup__dragged) {
   user-select: none;
   /* background-color: red; */
 }
@@ -53,6 +54,7 @@ body:has( .popup__dragged) {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #333;
   color: #fffd;
+  font-size: 16px;
 }
 .widget__draghandle {
   height: 1em;
@@ -95,7 +97,6 @@ body:has( .popup__dragged) {
   text-align: center;
 }
 
-
 /* SIZE PICKER */
 
 .widget--size-picker {
@@ -126,17 +127,17 @@ body:has( .popup__dragged) {
 .widget--size-picker__button:hover {
   color: #fffd;
 }
-.widget--size-picker__figures { 
+.widget--size-picker__figures {
   font-size: 3em;
   grid-area: 1 / 1 / 3 / 2;
   align-self: center;
 }
-.widget--size-picker__button--arrow-up { 
+.widget--size-picker__button--arrow-up {
   grid-area: 1 / 2 / 2 / 3;
   align-self: end;
   display: flex;
 }
-.widget--size-picker__button--arrow-down { 
+.widget--size-picker__button--arrow-down {
   grid-area: 2 / 2 / 3 / 3;
   align-self: start;
   display: flex;
@@ -146,9 +147,9 @@ body:has( .popup__dragged) {
 /* FAMILY PICKER */
 
 .widget--family-picker {
-   top: 0;
-   left: 0;
-   translate: calc(100vw - 25em) calc(100vh - 39.8em);
+  top: 0;
+  left: 0;
+  translate: calc(100vw - 25em) calc(100vh - 39.8em);
 }
 .widget--family-picker__content {
   font-size: 25px;
@@ -184,17 +185,16 @@ body:has( .popup__dragged) {
 }
 /* Track */
 .widget--family-picker__content::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 /* Handle */
 .widget--family-picker__content::-webkit-scrollbar-thumb {
-  background: #444; 
+  background: #444;
 }
 /* Handle on hover */
 .widget--family-picker__content::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 .widget--family-picker__content::-webkit-scrollbar-corner {
-  background: #f1f1f100; 
+  background: #f1f1f100;
 }
-
